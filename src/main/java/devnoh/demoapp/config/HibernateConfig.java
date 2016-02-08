@@ -32,15 +32,6 @@ public class HibernateConfig {
         return sessionFactory;
     }
 
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
-        properties.put("hibernate.enable_lazy_load_no_trans", env.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
-        return properties;
-    }
-
     /*
     @Bean
     public DataSource dataSource() {
@@ -49,6 +40,33 @@ public class HibernateConfig {
         dataSource.setUrl(env.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(env.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(env.getRequiredProperty("jdbc.password"));
+        return dataSource;
+    }
+    */
+
+    /**
+     * https://commons.apache.org/proper/commons-dbcp/
+     * @return a pooled data source
+     */
+    /*
+    @Bean
+    public DataSource dataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.username"));
+        dataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setInitialSize(5);
+        dataSource.setMinIdle(5);
+        dataSource.setMaxIdle(5);
+        dataSource.setMaxTotal(20);
+        dataSource.setMaxWaitMillis(30000);
+        dataSource.setPoolPreparedStatements(true);
+        dataSource.setValidationQuery(env.getProperty("jdbc.testQuery"));
+        dataSource.setTestOnBorrow(true);
+        dataSource.setTestOnReturn(false);
+        dataSource.setTestWhileIdle(true);
+        dataSource.setTimeBetweenEvictionRunsMillis(60000);
         return dataSource;
     }
     */
@@ -81,32 +99,15 @@ public class HibernateConfig {
         }
     }
 
-    /**
-     * https://commons.apache.org/proper/commons-dbcp/
-     * @return a pooled data source
-     */
-    /*
-    @Bean
-    public DataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.username"));
-        dataSource.setPassword(env.getProperty("jdbc.password"));
-        dataSource.setInitialSize(5);
-        dataSource.setMinIdle(5);
-        dataSource.setMaxIdle(5);
-        dataSource.setMaxTotal(20);
-        dataSource.setMaxWaitMillis(30000);
-        dataSource.setPoolPreparedStatements(true);
-        dataSource.setValidationQuery(env.getProperty("jdbc.testQuery"));
-        dataSource.setTestOnBorrow(true);
-        dataSource.setTestOnReturn(false);
-        dataSource.setTestWhileIdle(true);
-        dataSource.setTimeBetweenEvictionRunsMillis(60000);
-        return dataSource;
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
+        properties.put("hibernate.enable_lazy_load_no_trans", "true");
+        properties.put("hibernate.id.new_generator_mappings", "true");
+        return properties;
     }
-    */
 
     @Bean
     @Autowired

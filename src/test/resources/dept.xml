@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name="DEPT">
+    <column>DEPTNO</column>
+    <column>DNAME</column>
+    <column>LOC</column>
+    <row>
+      <value>10</value>
+      <value>ACCOUNTING</value>
+      <value><![CDATA[NEW YORK]]></value>
+    </row>
+    <row>
+      <value>20</value>
+      <value>RESEARCH</value>
+      <value>DALLAS</value>
+    </row>
+    <row>
+      <value>30</value>
+      <value>SALES</value>
+      <value>CHICAGO</value>
+    </row>
+    <row>
+      <value>40</value>
+      <value>OPERATIONS</value>
+      <value>BOSTON</value>
+    </row>
+  </table>
+</dataset>

@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name="EMP">
+    <column>EMPNO</column>
+    <column>ENAME</column>
+    <column>JOB</column>
+    <column>MGR</column>
+    <column>HIREDATE</column>
+    <column>SAL</column>
+    <column>COMM</column>
+    <column>DEPTNO</column>
+    <row>
+      <value>7369</value>
+      <value>SMITH</value>
+      <value>CLERK</value>
+      <value>7902</value>
+      <value><![CDATA[1980-12-17 00:00:00.0]]></value>
+      <value>800</value>
+      <null/>
+      <value>20</value>
+    </row>
+    <row>
+      <value>7499</value>
+      <value>ALLEN</value>
+      <value>SALESMAN</value>
+      <value>7698</value>
+      <value><![CDATA[1981-02-20 00:00:00.0]]></value>
+      <value>1600</value>
+      <value>300</value>
+      <value>30</value>
+    </row>
+    <row>
+      <value>7521</value>
+      <value>WARD</value>
+      <value>SALESMAN</value>
+      <value>7698</value>
+      <value><![CDATA[1981-02-22 00:00:00.0]]></value>
+      <value>1250</value>
+      <value>500</value>
+      <value>30</value>
+    </row>
+    <row>
+      <value>7566</value>
+      <value>JONES</value>
+      <value>MANAGER</value>
+      <value>7839</value>
+      <value><![CDATA[1981-04-02 00:00:00.0]]></value>
+      <value>2975</value>
+      <null/>
+      <value>20</value>
+    </row>
+    <row>
+      <value>7654</value>
+      <value>MARTIN</value>
+      <value>SALESMAN</value>
+      <value>7698</value>
+      <value><![CDATA[1981-09-28 00:00:00.0]]></value>
+      <value>1250</value>
+      <value>1400</value>
+      <value>30</value>
+    </row>
+    <row>
+      <value>7698</value>
+      <value>BLAKE</value>
+      <value>MANAGER</value>
+      <value>7839</value>
+      <value><![CDATA[1981-05-01 00:00:00.0]]></value>
+      <value>2850</value>
+      <null/>
+      <value>30</value>
+    </row>
+    <row>
+      <value>7782</value>
+      <value>CLARK</value>
+      <value>MANAGER</value>
+      <value>7839</value>
+      <value><![CDATA[1981-06-09 00:00:00.0]]></value>
+      <value>2450</value>
+      <null/>
+      <value>10</value>
+    </row>
+    <row>
+      <value>7788</value>
+      <value>SCOTT</value>
+      <value>ANALYST</value>
+      <value>7566</value>
+      <value><![CDATA[1987-04-19 00:00:00.0]]></value>
+      <value>3000</value>
+      <null/>
+      <value>20</value>
+    </row>
+    <row>
+      <value>7839</value>
+      <value>KING</value>
+      <value>PRESIDENT</value>
+      <null/>
+      <value><![CDATA[1981-11-17 00:00:00.0]]></value>
+      <value>5000</value>
+      <null/>
+      <value>10</value>
+    </row>
+    <row>
+      <value>7844</value>
+      <value>TURNER</value>
+      <value>SALESMAN</value>
+      <value>7698</value>
+      <value><![CDATA[1981-09-08 00:00:00.0]]></value>
+      <value>1500</value>
+      <value>0</value>
+      <value>30</value>
+    </row>
+    <row>
+      <value>7876</value>
+      <value>ADAMS</value>
+      <value>CLERK</value>
+      <value>7788</value>
+      <value><![CDATA[1987-05-23 00:00:00.0]]></value>
+      <value>1100</value>
+      <null/>
+      <value>20</value>
+    </row>
+    <row>
+      <value>7900</value>
+      <value>JAMES</value>
+      <value>CLERK</value>
+      <value>7698</value>
+      <value><![CDATA[1981-12-03 00:00:00.0]]></value>
+      <value>950</value>
+      <null/>
+      <value>30</value>
+    </row>
+    <row>
+      <value>7902</value>
+      <value>FORD</value>
+      <value>ANALYST</value>
+      <value>7566</value>
+      <value><![CDATA[1981-12-03 00:00:00.0]]></value>
+      <value>3000</value>
+      <null/>
+      <value>20</value>
+    </row>
+    <row>
+      <value>7934</value>
+      <value>MILLER</value>
+      <value>CLERK</value>
+      <value>7782</value>
+      <value><![CDATA[1982-01-23 00:00:00.0]]></value>
+      <value>1300</value>
+      <null/>
+      <value>10</value>
+    </row>
+  </table>
+</dataset>
