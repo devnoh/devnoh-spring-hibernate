@@ -10,7 +10,7 @@ public class Department extends BaseObject {
 
     @Id
     @Column(name = "DEPTNO", length = 2)
-    private int deptNo;
+    private Integer deptNo;
 
     @NotNull
     @Size(max = 14)
@@ -26,11 +26,11 @@ public class Department extends BaseObject {
     public Department() {
     }
 
-    public int getDeptNo() {
+    public Integer getDeptNo() {
         return deptNo;
     }
 
-    public void setDeptNo(int deptNo) {
+    public void setDeptNo(Integer deptNo) {
         this.deptNo = deptNo;
     }
 
@@ -70,9 +70,8 @@ public class Department extends BaseObject {
 
     @Override
     public int hashCode() {
-        int result = deptNo;
+        int result = deptNo.hashCode();
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
         return result;
     }
 

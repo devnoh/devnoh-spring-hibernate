@@ -11,7 +11,7 @@ public class Employee extends BaseObject {
     @TableGenerator(name = "EMPNO_GEN", table = "SEQUENCE", pkColumnName = "NAME", valueColumnName = "VALUE", pkColumnValue = "EMPNO", initialValue = 9000, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "EMPNO_GEN")
     @Column(name = "EMPNO", length = 4)
-    private int empNo;
+    private Integer empNo;
 
     @Column(name = "ENAME", length = 10, nullable = false)
     private String name;
@@ -38,11 +38,11 @@ public class Employee extends BaseObject {
     public Employee() {
     }
 
-    public int getEmpNo() {
+    public Integer getEmpNo() {
         return empNo;
     }
 
-    public void setEmpNo(int empNo) {
+    public void setEmpNo(Integer empNo) {
         this.empNo = empNo;
     }
 
@@ -116,7 +116,7 @@ public class Employee extends BaseObject {
 
     @Override
     public int hashCode() {
-        int result = empNo;
+        int result = empNo.hashCode();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }

@@ -1,14 +1,16 @@
-package devnoh.demoapp.dao;
+package devnoh.demoapp.dao.testng;
 
+import devnoh.demoapp.dao.*;
 import devnoh.demoapp.model.*;
 import org.dbunit.dataset.*;
 import org.dbunit.dataset.xml.*;
-import org.junit.*;
 import org.springframework.beans.factory.annotation.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 import java.util.*;
 
-public class HibernateDepartmentDaoTest extends AbstractDaoTest {
+public class HibernateDepartmentDaoTest extends devnoh.demoapp.dao.AbstractDaoTest {
 
     @Autowired
     DepartmentDao departmentDao;
@@ -24,7 +26,7 @@ public class HibernateDepartmentDaoTest extends AbstractDaoTest {
     public void testGetAll() {
         logger.debug("testGetAll...");
         List<Department> depts = departmentDao.getAll();
-        Assert.assertEquals(4, depts.size());
+        Assert.assertEquals(depts.size(), 4);
     }
 
     @Test
@@ -32,7 +34,7 @@ public class HibernateDepartmentDaoTest extends AbstractDaoTest {
         logger.debug("testGet...");
         Department dept = departmentDao.get(10);
         Assert.assertNotNull(dept);
-        Assert.assertEquals(10, (long)dept.getDeptNo());
+        Assert.assertEquals((int) dept.getDeptNo(), 10);
         Assert.assertEquals("ACCOUNTING", dept.getName());
         Assert.assertEquals("NEW YORK", dept.getLocation());
         Assert.assertNull(departmentDao.get(50));
@@ -49,7 +51,7 @@ public class HibernateDepartmentDaoTest extends AbstractDaoTest {
         logger.debug(dept);
         Assert.assertTrue(dept.getDeptNo() == 50);
         List<Department> depts = departmentDao.getAll();
-        Assert.assertEquals(5, depts.size());
+        Assert.assertEquals(depts.size(), 5);
     }
 
     @Test
@@ -59,7 +61,7 @@ public class HibernateDepartmentDaoTest extends AbstractDaoTest {
         departmentDao.delete(dept);
         Assert.assertNull(departmentDao.get(10));
         List<Department> depts = departmentDao.getAll();
-        Assert.assertEquals(3, depts.size());
+        Assert.assertEquals(depts.size(), 3);
     }
 
     @Test

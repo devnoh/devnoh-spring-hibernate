@@ -1,15 +1,17 @@
-package devnoh.demoapp.dao;
+package devnoh.demoapp.dao.testng;
 
+import devnoh.demoapp.dao.*;
 import devnoh.demoapp.model.*;
 import org.dbunit.dataset.*;
 import org.dbunit.dataset.xml.*;
 import org.joda.time.*;
-import org.junit.*;
 import org.springframework.beans.factory.annotation.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 import java.util.*;
 
-public class HibernateEmployeeDaoTest extends AbstractDaoTest {
+public class HibernateEmployeeDaoTest extends devnoh.demoapp.dao.AbstractDaoTest {
 
     @Autowired
     EmployeeDao employeeDao;
@@ -40,7 +42,7 @@ public class HibernateEmployeeDaoTest extends AbstractDaoTest {
         Assert.assertEquals("CLERK", emp.getJob());
         Assert.assertEquals(7902, (int) emp.getMgrNo());
         Assert.assertEquals(new DateTime(1980, 12, 17, 0, 0, 0).toDate().getTime(), emp.getHireDate().getTime());
-        Assert.assertEquals(800d, emp.getSalary(), 0);
+        Assert.assertEquals(800d, emp.getSalary());
         Assert.assertNull(emp.getCommission());
         Assert.assertEquals(20, (int) emp.getDepartment().getDeptNo());
         Assert.assertNull(employeeDao.get(9900));
@@ -57,7 +59,7 @@ public class HibernateEmployeeDaoTest extends AbstractDaoTest {
         logger.debug(emp);
         Assert.assertTrue(emp.getEmpNo() > 9000);
         List<Employee> emps = employeeDao.getAll();
-        Assert.assertEquals(15, emps.size());
+        Assert.assertEquals(emps.size(), 15);
     }
 
     @Test
@@ -67,7 +69,7 @@ public class HibernateEmployeeDaoTest extends AbstractDaoTest {
         employeeDao.delete(emp);
         Assert.assertNull(employeeDao.get(7369));
         List<Employee> emps = employeeDao.getAll();
-        Assert.assertEquals(13, emps.size());
+        Assert.assertEquals(emps.size(), 13);
     }
 
     @Test
@@ -80,6 +82,6 @@ public class HibernateEmployeeDaoTest extends AbstractDaoTest {
     @Test
     public void testFindEmployeesByDeptNo() {
         List<Employee> emps = employeeDao.findEmployeesByDeptNo(10);
-        Assert.assertEquals(3, emps.size());
+        Assert.assertEquals(emps.size(), 3);
     }
 }

@@ -7,7 +7,7 @@
     </Appenders>
     <Loggers>
         <Root level="INFO">
-            <AppenderRef ref="console"/>
+            <AppenderRef ref="console" level="INFO"/>
         </Root>
         <Logger name="devnoh.demoapp" level="DEBUG">
             <AppenderRef ref="console" level="DEBUG"/>
