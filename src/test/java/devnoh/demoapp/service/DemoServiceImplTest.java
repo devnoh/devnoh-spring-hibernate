@@ -46,16 +46,6 @@ public class DemoServiceImplTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        // employees
-        Employee emp = new Employee();
-        emp.setEmpNo(9001);
-        emp.setName("EMP1");
-        employees.add(emp);
-        emp = new Employee();
-        emp.setEmpNo(9002);
-        emp.setName("EMP2");
-        employees.add(emp);
-
         // departments
         Department dept = new Department();
         dept.setDeptNo(10);
@@ -65,6 +55,18 @@ public class DemoServiceImplTest {
         dept.setDeptNo(20);
         dept.setName("DEPT2");
         departments.add(dept);
+
+        // employees
+        Employee emp = new Employee();
+        emp.setEmpNo(9001);
+        emp.setName("EMP1");
+        emp.setDepartment(departments.get(0));
+        employees.add(emp);
+        emp = new Employee();
+        emp.setEmpNo(9002);
+        emp.setDepartment(departments.get(0));
+        emp.setName("EMP2");
+        employees.add(emp);
     }
 
     @Test
