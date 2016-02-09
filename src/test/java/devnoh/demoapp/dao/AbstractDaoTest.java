@@ -14,7 +14,6 @@ import org.springframework.test.context.web.*;
 
 import javax.sql.*;
 
-@WebAppConfiguration
 @ContextConfiguration(classes = {HibernateTestConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class AbstractDaoTest extends AbstractTransactionalJUnit4SpringContextTests {

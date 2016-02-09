@@ -15,8 +15,7 @@ import java.util.*;
 
 import static org.mockito.Mockito.*;
 
-@WebAppConfiguration
-@ContextConfiguration(classes = {SpringRootConfig.class})
+@ContextConfiguration(classes = {HibernateTestConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class) //@RunWith(MockitoJUnitRunner.class)
 public class DemoServiceImplTest {
 
@@ -98,7 +97,8 @@ public class DemoServiceImplTest {
     public void testGetAllDepartments() {
         logger.debug("testGetAllDepartments...");
         when(departmentDao.getAll()).thenReturn(departments);
-        Assert.assertEquals(demoService.getAllDepartments(), departments);
+        Assert.assertEquals(departments, demoService.getAllDepartments());
+        verify(departmentDao, times(1)).getAll();
     }
 
     @Test
@@ -107,7 +107,7 @@ public class DemoServiceImplTest {
         Employee emp = new Employee();
         emp.setEmpNo(9000);
         when(employeeDao.save(emp)).thenReturn(emp);
-        Assert.assertEquals(demoService.saveEmployee(emp), emp);
+        Assert.assertEquals(emp, demoService.saveEmployee(emp));
     }
 
     @Test
@@ -124,20 +124,22 @@ public class DemoServiceImplTest {
         Employee emp = new Employee();
         emp.setEmpNo(9000);
         when(employeeDao.get(anyInt())).thenReturn(emp);
-        Assert.assertEquals(demoService.getEmployee(emp.getEmpNo()), emp);
+        Assert.assertEquals(emp, demoService.getEmployee(emp.getEmpNo()));
     }
 
     @Test
     public void testGetAllEmployees() {
         logger.debug("testGetAllEmployees...");
         when(employeeDao.getAll()).thenReturn(employees);
-        Assert.assertEquals(demoService.getAllEmployees(), employees);
+        Assert.assertEquals(employees, demoService.getAllEmployees());
+        verify(employeeDao, times(1)).getAll();
     }
 
     @Test
     public void testFindEmployeesByDeptNo() {
         logger.debug("testFindEmployeesByDeptNo...");
         when(employeeDao.findEmployeesByDeptNo(10)).thenReturn(employees);
-        Assert.assertEquals(demoService.findEmployeesByDeptNo(10), employees);
+        Assert.assertEquals(employees, demoService.findEmployeesByDeptNo(10));
+        verify(employeeDao, times(1)).findEmployeesByDeptNo(10);
     }
 }

@@ -14,7 +14,7 @@ import java.util.*;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"devnoh.demoapp"})
+@ComponentScan({"devnoh.demoapp.dao"})
 @PropertySource(value = {"classpath:application-test.properties"})
 public class HibernateTestConfig {
 

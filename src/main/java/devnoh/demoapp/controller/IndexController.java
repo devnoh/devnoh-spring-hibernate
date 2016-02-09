@@ -25,7 +25,7 @@ public class IndexController {
     }
 
     @RequestMapping("/depts")
-    public String depts(Model model) {
+    public String depts(ModelMap model) {
         logger.debug("depts()...");
         List<Department> depts = demoService.getAllDepartments();
         model.addAttribute("depts", depts);
@@ -33,7 +33,7 @@ public class IndexController {
     }
 
     @RequestMapping("/emps")
-    public String emps(@RequestParam(value="deptNo", required=false, defaultValue = "0") int deptNo, Model model) {
+    public String emps(@RequestParam(value="deptNo", required=false, defaultValue = "0") int deptNo, ModelMap model) {
         logger.debug("emps()...");
         List<Employee> emps = (deptNo == 0) ? demoService.getAllEmployees() : demoService.findEmployeesByDeptNo(deptNo);
         model.addAttribute("emps", emps);

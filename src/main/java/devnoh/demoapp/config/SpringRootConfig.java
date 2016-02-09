@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.*;
 
 @Configuration
-@ComponentScan
+@ComponentScan("devnoh.demoapp")
 public class SpringRootConfig {
 
 }
