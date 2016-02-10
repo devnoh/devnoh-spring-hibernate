@@ -18,17 +18,19 @@ Dependencies
 How to build
 ------------
 
+*Maven:*
 $ mvn clean package
+
+*Gradle:*
+$ gradle build
 
 How to run
 ----------
 *Maven:*
-
 $ mvn jetty:run
 $ mvn tomcat7:run
 
 *Gradle:*
-
 $ gradle jettyRun
 $ gradle tomcatRun
 
