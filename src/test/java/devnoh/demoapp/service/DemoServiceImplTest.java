@@ -4,6 +4,7 @@ import devnoh.demoapp.config.*;
 import devnoh.demoapp.dao.*;
 import devnoh.demoapp.model.*;
 import org.apache.logging.log4j.*;
+import org.hibernate.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.mockito.*;
@@ -15,7 +16,7 @@ import java.util.*;
 
 import static org.mockito.Mockito.*;
 
-@ContextConfiguration(classes = {HibernateTestConfig.class})
+@ContextConfiguration(classes = {SpringTestConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class) //@RunWith(MockitoJUnitRunner.class)
 public class DemoServiceImplTest {
 

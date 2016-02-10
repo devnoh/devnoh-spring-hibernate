@@ -6,7 +6,6 @@ import devnoh.demoapp.service.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.mockito.*;
-import org.mockito.verification.*;
 import org.springframework.test.context.*;
 import org.springframework.test.context.junit4.*;
 import org.springframework.test.context.web.*;
@@ -17,7 +16,7 @@ import java.util.*;
 import static org.mockito.Mockito.*;
 
 @WebAppConfiguration
-@ContextConfiguration(classes = {SpringRootConfig.class})
+@ContextConfiguration(classes = {SpringTestConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class IndexControllerTest {
 
@@ -32,11 +31,11 @@ public class IndexControllerTest {
     @Spy
     List<Department> departments = new ArrayList<Department>();
 
-//    @Spy
-//    List<Employee> employees = new ArrayList<Employee>();
-//
-//    @Spy
-//    List<Employee> employees2 = new ArrayList<Employee>();
+    @Spy
+    List<Employee> employees = new ArrayList<Employee>();
+
+    @Spy
+    List<Employee> deptEmployees = new ArrayList<Employee>();
 
     @Before
     public void setUp(){
@@ -58,18 +57,15 @@ public class IndexControllerTest {
 
     @Test
     public void testEmps() {
-        List<Employee> employees = new ArrayList<Employee>();
-        List<Employee> employees2 = new ArrayList<Employee>();
-
         when(demoService.getAllEmployees()).thenReturn(employees);
         Assert.assertEquals(indexController.emps(0, model), "emps");
         Assert.assertEquals(model.get("emps"), employees);
         Assert.assertEquals(model.get("deptNo"), 0);
         verify(demoService, times(1)).getAllEmployees();
 
-        when(demoService.findEmployeesByDeptNo(10)).thenReturn(employees2);
+        when(demoService.findEmployeesByDeptNo(10)).thenReturn(deptEmployees);
         Assert.assertEquals(indexController.emps(10, model), "emps");
-        Assert.assertEquals(model.get("emps"), employees2);
+        Assert.assertEquals(model.get("emps"), deptEmployees);
         Assert.assertEquals(model.get("deptNo"), 10);
         verify(demoService, times(1)).findEmployeesByDeptNo(10);
     }
