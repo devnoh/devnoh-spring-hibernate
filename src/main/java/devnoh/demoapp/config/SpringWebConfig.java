@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.*;
 import java.util.*;
 
 @Configuration
-@ComponentScan("devnoh.demoapp")
+@ComponentScan("devnoh.demoapp.controller")
 @EnableWebMvc //<mvc:annotation-driven />
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
@@ -27,7 +27,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        //ReloadableResourceBundleMessageSource messageSource=new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
@@ -36,7 +35,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LocaleResolver localeResolver() {
         final CookieLocaleResolver resolver = new CookieLocaleResolver();
-        //resolver.setDefaultLocale(new Locale("en_US"));
+        resolver.setDefaultLocale(new Locale("en_US"));
         return resolver;
     }
 
@@ -56,5 +55,4 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
-
 }

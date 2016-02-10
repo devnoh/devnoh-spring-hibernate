@@ -13,14 +13,6 @@
 
 <h2>Employees <c:if test="${deptNo gt 0}">(Dept No: ${deptNo})</c:if></h2>
 
-<%--
-<ul>
-    <c:forEach items="${emps}" var="emp">
-        <li>${emp.name}</li>
-    </c:forEach>
-</ul>
---%>
-
 <table>
     <tr>
         <th>No</th>
@@ -37,8 +29,8 @@
             <td>${emp.name}</td>
             <td>${emp.job}</td>
             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${emp.hireDate}"/></td>
-            <td style="text-align: right"><fmt:formatNumber value="${emp.salary}" type="currency"/></td>
-            <td style="text-align: right"><fmt:formatNumber value="${emp.commission}" type="currency"/></td>
+            <td style="text-align: right"><fmt:formatNumber value="${emp.salary}" type="currency" currencySymbol="$" /></td>
+            <td style="text-align: right"><fmt:formatNumber value="${emp.commission}" type="currency" currencySymbol="$" /></td>
             <td>${emp.department.name}</td>
         </tr>
     </c:forEach>
