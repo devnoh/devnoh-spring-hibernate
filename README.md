@@ -5,13 +5,23 @@ Building a Web App with Spring 4 and Hibernate 4
 * Annotation-based Configuration
 * Testing with JUnit 4 + Mockito
 
+Dependencies
+------------
+
+* Servlet 3.0 + JSP 2.2 + JSTL 1.2
+* Spring Framework 4
+* Hibernate 4
+* 3p0 (or dbcp) + Oracle (H2)
+* JUnit 4 + DBUnit + Mockito
+* Log4J 2
+
 How to build
---------------------
+------------
 
 $ mvn clean package
 
 How to run
---------------------
+----------
 
 $ mvn jetty:run
 

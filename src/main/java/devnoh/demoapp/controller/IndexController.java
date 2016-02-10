@@ -4,6 +4,7 @@ import devnoh.demoapp.model.*;
 import devnoh.demoapp.service.*;
 import org.apache.logging.log4j.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.context.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ public class IndexController {
 
     @Autowired
     private DemoService demoService;
+
+    @Autowired
+    MessageSource messageSource;
 
     @RequestMapping("/")
     public String index() {

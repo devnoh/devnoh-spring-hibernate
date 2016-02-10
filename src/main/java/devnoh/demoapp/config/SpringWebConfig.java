@@ -3,8 +3,12 @@ package devnoh.demoapp.config;
 import org.springframework.context.*;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.*;
+import org.springframework.web.servlet.*;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.i18n.*;
 import org.springframework.web.servlet.view.*;
+
+import java.util.*;
 
 @Configuration
 @ComponentScan("devnoh.demoapp")
@@ -23,13 +27,34 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        //ReloadableResourceBundleMessageSource messageSource=new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+    }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        final CookieLocaleResolver resolver = new CookieLocaleResolver();
+        //resolver.setDefaultLocale(new Locale("en_US"));
+        return resolver;
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor(){
+        LocaleChangeInterceptor interceptor=new LocaleChangeInterceptor();
+        interceptor.setParamName("lang");
+        return interceptor;
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
     }
 
 }
