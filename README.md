@@ -22,13 +22,15 @@ $ mvn clean package
 
 How to run
 ----------
+*Maven:*
 
 $ mvn jetty:run
-
-or
-
 $ mvn tomcat7:run
 
+*Gradle:*
+
+$ gradle jettyRun
+$ gradle tomcatRun
 
 Run It on Docker
 ----------------
