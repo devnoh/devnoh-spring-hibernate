@@ -19,25 +19,33 @@ How to build
 ------------
 
 **Maven:**
+```
 $ mvn clean package
+```
 
 **Gradle:**
+```
 $ gradle build
+```
 
 How to run
 ----------
 **Maven:**
+```
 $ mvn jetty:run
 $ mvn tomcat7:run
+```
 
 **Gradle:**
+```
 $ gradle jettyRun
 $ gradle tomcatRun
+```
 
 Run It on Docker
 ----------------
-
+```
 $ docker build -t devnoh/spring-hibernate .
 $ docker run -it --rm -p 8888:8080 devnoh/spring-hibernate
-
+```
 and access http://192.168.99.100:8888
