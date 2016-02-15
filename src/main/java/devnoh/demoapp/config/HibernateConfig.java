@@ -23,15 +23,6 @@ public class HibernateConfig {
     @Autowired
     private Environment env;
 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"devnoh.demoapp.model"});
-        return sessionFactory;
-    }
-
     /*
     @Bean
     public DataSource dataSource() {
@@ -99,6 +90,15 @@ public class HibernateConfig {
         }
     }
 
+    @Bean
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setHibernateProperties(hibernateProperties());
+        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setPackagesToScan(new String[]{"devnoh.demoapp.model"});
+        return sessionFactory;
+    }
+
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
@@ -110,7 +110,6 @@ public class HibernateConfig {
     }
 
     @Bean
-    @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(s);
