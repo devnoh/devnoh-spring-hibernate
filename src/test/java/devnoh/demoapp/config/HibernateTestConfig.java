@@ -21,15 +21,6 @@ public class HibernateTestConfig {
     @Autowired
     private Environment env;
 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"devnoh.demoapp.model"});
-        return sessionFactory;
-    }
-
     @Bean(name = "dataSource")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -52,7 +43,15 @@ public class HibernateTestConfig {
     }
 
     @Bean
-    @Autowired
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setHibernateProperties(hibernateProperties());
+        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setPackagesToScan(new String[]{"devnoh.demoapp.model"});
+        return sessionFactory;
+    }
+
+    @Bean
     public HibernateTransactionManager transactionManager(SessionFactory s) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(s);

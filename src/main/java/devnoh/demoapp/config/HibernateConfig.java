@@ -64,6 +64,7 @@ public class HibernateConfig {
 
     /**
      * http://www.mchange.com/projects/c3p0/
+     *
      * @return a pooled data source
      */
     @Bean
@@ -74,20 +75,31 @@ public class HibernateConfig {
             dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
             dataSource.setUser(env.getProperty("jdbc.username"));
             dataSource.setPassword(env.getProperty("jdbc.password"));
-            dataSource.setInitialPoolSize(5);
-            dataSource.setAcquireIncrement(5);
-            dataSource.setMinPoolSize(5);
-            dataSource.setMaxPoolSize(20);
-            dataSource.setMaxIdleTime(300);
-            dataSource.setMaxStatements(180);
+            dataSource.setInitialPoolSize(Integer.valueOf(env.getProperty("jdbc.initialPoolSize")));
+            dataSource.setAcquireIncrement(Integer.valueOf(env.getProperty("jdbc.acquireIncrement")));
+            dataSource.setMinPoolSize(Integer.valueOf(env.getProperty("jdbc.minPoolSize")));
+            dataSource.setMaxPoolSize(Integer.valueOf(env.getProperty("jdbc.maxPoolSize")));
+            dataSource.setMaxIdleTime(Integer.valueOf(env.getProperty("jdbc.maxIdleTime")));
+            dataSource.setMaxStatements(Integer.valueOf(env.getProperty("jdbc.maxStatements")));
             dataSource.setPreferredTestQuery(env.getProperty("jdbc.testQuery"));
-            dataSource.setIdleConnectionTestPeriod(60);
-            dataSource.setTestConnectionOnCheckin(true);
-            dataSource.setTestConnectionOnCheckout(false);
+            dataSource.setIdleConnectionTestPeriod(Integer.valueOf(env.getProperty("jdbc.testPeriod")));
+            dataSource.setTestConnectionOnCheckin(Boolean.valueOf(env.getProperty("jdbc.testOnCheckin")));
+            dataSource.setTestConnectionOnCheckout(Boolean.valueOf(env.getProperty("jdbc.testOnCheckout")));
             return dataSource;
         } catch (PropertyVetoException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
+        properties.put("hibernate.enable_lazy_load_no_trans", env.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
+        properties.put("hibernate.id.new_generator_mappings", env.getRequiredProperty("hibernate.id.new_generator_mappings"));
+        //properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        return properties;
     }
 
     @Bean
@@ -97,16 +109,6 @@ public class HibernateConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[]{"devnoh.demoapp.model"});
         return sessionFactory;
-    }
-
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
-        properties.put("hibernate.enable_lazy_load_no_trans", "true");
-        properties.put("hibernate.id.new_generator_mappings", "true");
-        return properties;
     }
 
     @Bean

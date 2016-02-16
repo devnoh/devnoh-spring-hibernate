@@ -25,10 +25,10 @@ public class Employee extends BaseObject {
     @Column(name = "HIREDATE")
     private Date hireDate;
 
-    @Column(name = "SAL", precision = 7, scale = 2)
+    @Column(name = "SAL", columnDefinition = "NUMBER(7,2)", precision = 7, scale = 2)
     private Double salary;
 
-    @Column(name = "COMM", precision = 7, scale = 2)
+    @Column(name = "COMM", columnDefinition = "NUMBER(7,2)", precision = 7, scale = 2)
     private Double commission;
 
     @ManyToOne(fetch = FetchType.LAZY)
