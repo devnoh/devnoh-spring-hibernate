@@ -80,6 +80,7 @@ public class HibernateEmployeeDaoTest extends AbstractDaoTest {
 
     @Test
     public void testFindEmployeesByDeptNo() {
+        logger.debug("testFindEmployeesByDeptNo...");
         List<Employee> emps = employeeDao.findEmployeesByDeptNo(10);
         Assert.assertEquals(3, emps.size());
     }
