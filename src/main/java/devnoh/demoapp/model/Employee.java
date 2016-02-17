@@ -8,8 +8,8 @@ import java.util.*;
 public class Employee extends BaseObject {
 
     @Id
-    @TableGenerator(name = "EMPNO_GEN", table = "SEQUENCE", pkColumnName = "NAME", valueColumnName = "VALUE", pkColumnValue = "EMPNO", initialValue = 9000, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "EMPNO_GEN")
+    //@TableGenerator(name = "EMPNO_GEN", table = "SEQUENCE", pkColumnName = "NAME", valueColumnName = "VALUE", pkColumnValue = "EMPNO", initialValue = 9000, allocationSize = 1)
+    //@GeneratedValue(strategy = GenerationType.TABLE, generator = "EMPNO_GEN")
     @Column(name = "EMPNO", length = 4)
     private Integer empNo;
 

@@ -50,12 +50,13 @@ public class HibernateEmployeeDaoTest extends AbstractDaoTest {
     public void testSave() {
         logger.debug("testSave...");
         Employee emp = new Employee();
+        emp.setEmpNo(9001);
         emp.setName("SEHWAN");
         emp.setJob("DEVELOPER");
         emp.setSalary(1000d);
         emp = employeeDao.save(emp);
         logger.debug(emp);
-        Assert.assertTrue(emp.getEmpNo() > 9000);
+        Assert.assertTrue(emp.getEmpNo() == 9001);
         List<Employee> emps = employeeDao.getAll();
         Assert.assertEquals(15, emps.size());
     }
