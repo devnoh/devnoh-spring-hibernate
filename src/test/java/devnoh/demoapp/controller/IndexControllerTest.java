@@ -23,7 +23,8 @@ public class IndexControllerTest {
     @Mock
     DemoService demoService;
 
-    @InjectMocks IndexController indexController;
+    @InjectMocks
+    IndexController indexController;
 
     @Spy
     ModelMap model;
