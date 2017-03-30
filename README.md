@@ -5,8 +5,11 @@ Building a Web Application with Spring 4 and Hibernate 4
 * Annotation-based Configuration
 * Testing with JUnit 4 + Mockito
 
-Dependencies
-------------
+## Build Status
+
+[![Build Status](https://travis-ci.org/devnoh/devnoh-spring-hibernate.svg?branch=master)](https://travis-ci.org/devnoh/devnoh-spring-hibernate)
+
+## Dependencies
 
 * Servlet 3.0 + JSP 2.2 + JSTL 1.2
 * Spring Framework 4
@@ -15,8 +18,7 @@ Dependencies
 * JUnit 4 + DBUnit + Mockito
 * Log4J 2
 
-How to build
-------------
+## How to build
 
 **Maven:**
 ```
@@ -28,8 +30,8 @@ $ mvn clean package
 $ gradle build
 ```
 
-How to run
-----------
+## How to run
+
 **Maven:**
 ```
 $ mvn jetty:run
@@ -42,8 +44,8 @@ $ gradle jettyRun
 $ gradle tomcatRun
 ```
 
-Run It on Docker
-----------------
+## Run It on Docker
+
 ```
 $ docker build -t devnoh/spring-hibernate .
 $ docker run -it --rm -p 8888:8080 devnoh/spring-hibernate
